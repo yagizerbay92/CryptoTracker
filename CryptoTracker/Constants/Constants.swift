@@ -94,3 +94,14 @@ public enum OrderConstants {
         }
     }
 }
+
+public enum CellIdentifiers {
+    case marketListCellIdentifier
+    
+    public var value: String {
+        switch self {
+        case .marketListCellIdentifier:
+            return "CoinMarketListTableViewCell"
+        }
+    }
+}

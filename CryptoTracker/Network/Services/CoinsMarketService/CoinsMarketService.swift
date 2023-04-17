@@ -16,7 +16,7 @@ class CoinsMarketService {
     private func createUrl() -> URL? {
         let urlQuery: [URLQueryItem] = [URLQueryItem(name: URLBuilderComponents.currencyKey.value, value: "usd"),
                                         URLQueryItem(name: URLBuilderComponents.orderKey.value, value: OrderConstants.marketCapDescending.value),
-                                        URLQueryItem(name: URLBuilderComponents.perPageKey.value, value: "5"),
+                                        URLQueryItem(name: URLBuilderComponents.perPageKey.value, value: "10"),
                                         URLQueryItem(name: URLBuilderComponents.pageKey.value, value: "1"),
                                         URLQueryItem(name: URLBuilderComponents.sparklineKey.value, value: false.description),
                                         URLQueryItem(name: URLBuilderComponents.localeKey.value, value: "en")]

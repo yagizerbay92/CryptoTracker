@@ -15,6 +15,9 @@
 		434FA01B29CB58BB00B6EB92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434FA01929CB58BB00B6EB92 /* LaunchScreen.storyboard */; };
 		434FA02529CB5B1000B6EB92 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434FA02429CB5B1000B6EB92 /* NetworkManager.swift */; };
 		434FA02729D4860900B6EB92 /* UrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434FA02629D4860800B6EB92 /* UrlBuilder.swift */; };
+		4373E31929E9933B00E24764 /* CoinMarketListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4373E31829E9933B00E24764 /* CoinMarketListTableViewCell.swift */; };
+		4373E31C29EDFA1600E24764 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4373E31B29EDFA1600E24764 /* DoubleExtension.swift */; };
+		4373E31E29EDFB5200E24764 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4373E31D29EDFB5200E24764 /* StringExtension.swift */; };
 		4396BB7129D7017E009C04CA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4396BB7029D7017E009C04CA /* Constants.swift */; };
 		4396BB7529D71264009C04CA /* CoinsMarketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4396BB7429D71264009C04CA /* CoinsMarketService.swift */; };
 		4396BB7729D7127B009C04CA /* CoinsMarketServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4396BB7629D7127B009C04CA /* CoinsMarketServiceProtocol.swift */; };
@@ -34,6 +37,9 @@
 		434FA01C29CB58BB00B6EB92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		434FA02429CB5B1000B6EB92 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		434FA02629D4860800B6EB92 /* UrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlBuilder.swift; sourceTree = "<group>"; };
+		4373E31829E9933B00E24764 /* CoinMarketListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMarketListTableViewCell.swift; sourceTree = "<group>"; };
+		4373E31B29EDFA1600E24764 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		4373E31D29EDFB5200E24764 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		4396BB7029D7017E009C04CA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4396BB7429D71264009C04CA /* CoinsMarketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsMarketService.swift; sourceTree = "<group>"; };
 		4396BB7629D7127B009C04CA /* CoinsMarketServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsMarketServiceProtocol.swift; sourceTree = "<group>"; };
@@ -92,6 +98,8 @@
 		434FA00D29CB58B900B6EB92 /* CryptoTracker */ = {
 			isa = PBXGroup;
 			children = (
+				4373E31A29EDF98D00E24764 /* Extensions */,
+				4373E31729E98D6900E24764 /* CustomCells */,
 				4396BB6F29D6FA77009C04CA /* Constants */,
 				4396BB6E29D48869009C04CA /* Models */,
 				434FA02329CB5AE700B6EB92 /* Network */,
@@ -122,6 +130,23 @@
 				434FA02629D4860800B6EB92 /* UrlBuilder.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		4373E31729E98D6900E24764 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				4373E31829E9933B00E24764 /* CoinMarketListTableViewCell.swift */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		4373E31A29EDF98D00E24764 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4373E31B29EDFA1600E24764 /* DoubleExtension.swift */,
+				4373E31D29EDFB5200E24764 /* StringExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		4396BB6E29D48869009C04CA /* Models */ = {
@@ -272,12 +297,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4373E31929E9933B00E24764 /* CoinMarketListTableViewCell.swift in Sources */,
 				4396BB7929E1A5D9009C04CA /* MarketListModel.swift in Sources */,
 				434FA02729D4860900B6EB92 /* UrlBuilder.swift in Sources */,
+				4373E31C29EDFA1600E24764 /* DoubleExtension.swift in Sources */,
 				4396BB7529D71264009C04CA /* CoinsMarketService.swift in Sources */,
 				434FA02529CB5B1000B6EB92 /* NetworkManager.swift in Sources */,
 				434FA01329CB58B900B6EB92 /* ViewController.swift in Sources */,
 				4396BB7729D7127B009C04CA /* CoinsMarketServiceProtocol.swift in Sources */,
+				4373E31E29EDFB5200E24764 /* StringExtension.swift in Sources */,
 				434FA00F29CB58B900B6EB92 /* AppDelegate.swift in Sources */,
 				434FA01129CB58B900B6EB92 /* SceneDelegate.swift in Sources */,
 				4396BB7129D7017E009C04CA /* Constants.swift in Sources */,
