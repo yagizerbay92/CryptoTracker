@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4317B30329F0355700BFFDED /* MarketListsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4317B30229F0355700BFFDED /* MarketListsViewModel.swift */; };
+		4317B30529F0395A00BFFDED /* MarketListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4317B30429F0395A00BFFDED /* MarketListViewModelProtocol.swift */; };
 		434FA00F29CB58B900B6EB92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434FA00E29CB58B900B6EB92 /* AppDelegate.swift */; };
 		434FA01129CB58B900B6EB92 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434FA01029CB58B900B6EB92 /* SceneDelegate.swift */; };
-		434FA01329CB58B900B6EB92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434FA01229CB58B900B6EB92 /* ViewController.swift */; };
+		434FA01329CB58B900B6EB92 /* MarketlistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434FA01229CB58B900B6EB92 /* MarketlistsViewController.swift */; };
 		434FA01629CB58B900B6EB92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434FA01429CB58B900B6EB92 /* Main.storyboard */; };
 		434FA01829CB58BB00B6EB92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 434FA01729CB58BB00B6EB92 /* Assets.xcassets */; };
 		434FA01B29CB58BB00B6EB92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434FA01929CB58BB00B6EB92 /* LaunchScreen.storyboard */; };
@@ -27,10 +29,12 @@
 
 /* Begin PBXFileReference section */
 		22FFD2092E26A6B81E823584 /* Pods-CryptoTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoTracker.release.xcconfig"; path = "Target Support Files/Pods-CryptoTracker/Pods-CryptoTracker.release.xcconfig"; sourceTree = "<group>"; };
+		4317B30229F0355700BFFDED /* MarketListsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketListsViewModel.swift; sourceTree = "<group>"; };
+		4317B30429F0395A00BFFDED /* MarketListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketListViewModelProtocol.swift; sourceTree = "<group>"; };
 		434FA00B29CB58B900B6EB92 /* CryptoTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		434FA00E29CB58B900B6EB92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		434FA01029CB58B900B6EB92 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		434FA01229CB58B900B6EB92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		434FA01229CB58B900B6EB92 /* MarketlistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketlistsViewController.swift; sourceTree = "<group>"; };
 		434FA01529CB58B900B6EB92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		434FA01729CB58BB00B6EB92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		434FA01A29CB58BB00B6EB92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -77,6 +81,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		4317B30129F034DB00BFFDED /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4317B30229F0355700BFFDED /* MarketListsViewModel.swift */,
+				4317B30429F0395A00BFFDED /* MarketListViewModelProtocol.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		434FA00229CB58B900B6EB92 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +111,7 @@
 		434FA00D29CB58B900B6EB92 /* CryptoTracker */ = {
 			isa = PBXGroup;
 			children = (
+				4317B30129F034DB00BFFDED /* ViewModels */,
 				4373E31A29EDF98D00E24764 /* Extensions */,
 				4373E31729E98D6900E24764 /* CustomCells */,
 				4396BB6F29D6FA77009C04CA /* Constants */,
@@ -117,7 +131,7 @@
 		434FA02229CB5A8700B6EB92 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				434FA01229CB58B900B6EB92 /* ViewController.swift */,
+				434FA01229CB58B900B6EB92 /* MarketlistsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -300,10 +314,12 @@
 				4373E31929E9933B00E24764 /* CoinMarketListTableViewCell.swift in Sources */,
 				4396BB7929E1A5D9009C04CA /* MarketListModel.swift in Sources */,
 				434FA02729D4860900B6EB92 /* UrlBuilder.swift in Sources */,
+				4317B30329F0355700BFFDED /* MarketListsViewModel.swift in Sources */,
 				4373E31C29EDFA1600E24764 /* DoubleExtension.swift in Sources */,
 				4396BB7529D71264009C04CA /* CoinsMarketService.swift in Sources */,
+				4317B30529F0395A00BFFDED /* MarketListViewModelProtocol.swift in Sources */,
 				434FA02529CB5B1000B6EB92 /* NetworkManager.swift in Sources */,
-				434FA01329CB58B900B6EB92 /* ViewController.swift in Sources */,
+				434FA01329CB58B900B6EB92 /* MarketlistsViewController.swift in Sources */,
 				4396BB7729D7127B009C04CA /* CoinsMarketServiceProtocol.swift in Sources */,
 				4373E31E29EDFB5200E24764 /* StringExtension.swift in Sources */,
 				434FA00F29CB58B900B6EB92 /* AppDelegate.swift in Sources */,

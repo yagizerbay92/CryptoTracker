@@ -11,13 +11,14 @@ import Foundation
 
 class CoinsMarketService {
     static let shared = CoinsMarketService()
+    public var isPaginating = false
     private init() {}
     
-    private func createUrl() -> URL? {
+    private func createUrl(paginationValue: Int) -> URL? {
         let urlQuery: [URLQueryItem] = [URLQueryItem(name: URLBuilderComponents.currencyKey.value, value: "usd"),
                                         URLQueryItem(name: URLBuilderComponents.orderKey.value, value: OrderConstants.marketCapDescending.value),
                                         URLQueryItem(name: URLBuilderComponents.perPageKey.value, value: "10"),
-                                        URLQueryItem(name: URLBuilderComponents.pageKey.value, value: "1"),
+                                        URLQueryItem(name: URLBuilderComponents.pageKey.value, value: paginationValue.description),
                                         URLQueryItem(name: URLBuilderComponents.sparklineKey.value, value: false.description),
                                         URLQueryItem(name: URLBuilderComponents.localeKey.value, value: "en")]
         
@@ -29,8 +30,13 @@ class CoinsMarketService {
 }
 
 extension CoinsMarketService {
-    func getMarketList(completion: @escaping (Result<[MarketLisItem], Error>) -> Void) {
-        guard let url = createUrl() else { return }
+    func getMarketList(pagination: Bool = false,
+                       paginationValue: Int = 1,
+                       completion: @escaping (Result<[MarketLisItem], Error>) -> Void) {
+        guard let url = createUrl(paginationValue: paginationValue) else { return }
+        if pagination {
+            self.isPaginating = true
+        }
         
         NetworkManager.shared.request(dataType: [MarketLisItem].self,
                                       urlString: url,
@@ -38,8 +44,14 @@ extension CoinsMarketService {
             switch result {
             case .success(let success):
                 completion(.success(success))
+                if pagination {
+                    self.isPaginating = false
+                }
             case .failure(let failure):
                 print(failure)
+                if pagination {
+                    self.isPaginating = false
+                }
             }
         }
     }

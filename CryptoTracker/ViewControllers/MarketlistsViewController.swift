@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MarketlistsViewController.swift
 //  CryptoTracker
 //
 //  Created by Erbay, Yagiz on 22.03.2023.
@@ -7,7 +7,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MarketlistsViewController: UIViewController {
+
+    private let viewModelProtocol: MarketListViewModelProtocol
+    
+    init(viewModelProtocol: MarketListViewModelProtocol) {
+        self.viewModelProtocol = viewModelProtocol
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
     
     private lazy var coinMarketTableView: UITableView = {
         let temp = UITableView()
@@ -25,14 +36,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         activeConstraints()
-        CoinsMarketService.shared.getMarketList { [weak self] result in
-            switch result {
-            case .success(let success):
-                self?.marketList = success
-                self?.coinMarketTableView.reloadData()
-            case .failure(let error):
-                print(error)
-            }
+        viewModelProtocol.fetchMarketList(pagination: false, paginationValue: 1)
+        viewModelProtocol.subscribeListChange { [weak self] in
+            self?.coinMarketTableView.reloadData()
         }
     }
     
@@ -53,12 +59,9 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension MarketlistsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let cellModelItem = marketList {
-            return cellModelItem.count
-        }
-        return 0
+        return viewModelProtocol.returnMarketTableViewListCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -67,8 +70,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError()
         }
         
-        if let cellModelItem = marketList {
-            cell.configure(with: cellModelItem[indexPath.row])
+        if let cellModelItem = viewModelProtocol.returnMarketTableViewList(order: indexPath) {
+            cell.configure(with: cellModelItem)
             return cell
         }
         
@@ -77,6 +80,28 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //print("data fetched")
+        let position = scrollView.contentOffset.y
+        if position > coinMarketTableView.contentSize.height - 100 - scrollView.frame.size.height {
+            // fetch more data
+            viewModelProtocol.startPaginationCount()
+            guard !CoinsMarketService.shared.isPaginating else {
+                return
+            }
+            self.coinMarketTableView.tableFooterView = viewModelProtocol.returnLoadingAnimationFooter(customView: self.view)
+            viewModelProtocol.fetchMarketList(pagination: true, paginationValue: viewModelProtocol.returnPaginationCount())
+            viewModelProtocol.subscribeListChange { [weak self] in
+                DispatchQueue.main.async {
+                    self?.coinMarketTableView.reloadData()
+                    self?.coinMarketTableView.tableFooterView = nil
+                }
+    
+            }
+            print("data fetched")
+        }
     }
 }
 
