@@ -36,9 +36,14 @@ class MarketlistsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         activeConstraints()
-        viewModelProtocol.fetchMarketList(pagination: false, paginationValue: 1)
+        viewModelProtocol.fetchMarketList(pagination: false)
         viewModelProtocol.subscribeListChange { [weak self] in
             self?.coinMarketTableView.reloadData()
+            self?.coinMarketTableView.tableFooterView = nil
+        }
+        viewModelProtocol.subscribeListChangeError { [weak self] in
+            PopUpManager.shared.showAlertView()
+            self?.coinMarketTableView.tableFooterView = nil
         }
     }
     
@@ -81,25 +86,17 @@ extension MarketlistsViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //print("data fetched")
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let position = scrollView.contentOffset.y
+        
         if position > coinMarketTableView.contentSize.height - 100 - scrollView.frame.size.height {
             // fetch more data
-            viewModelProtocol.startPaginationCount()
             guard !CoinsMarketService.shared.isPaginating else {
                 return
             }
             self.coinMarketTableView.tableFooterView = viewModelProtocol.returnLoadingAnimationFooter(customView: self.view)
-            viewModelProtocol.fetchMarketList(pagination: true, paginationValue: viewModelProtocol.returnPaginationCount())
-            viewModelProtocol.subscribeListChange { [weak self] in
-                DispatchQueue.main.async {
-                    self?.coinMarketTableView.reloadData()
-                    self?.coinMarketTableView.tableFooterView = nil
-                }
-    
-            }
+            viewModelProtocol.fetchMarketList(pagination: true)
             print("data fetched")
         }
     }

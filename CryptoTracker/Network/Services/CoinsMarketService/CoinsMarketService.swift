@@ -31,7 +31,7 @@ class CoinsMarketService {
 
 extension CoinsMarketService {
     func getMarketList(pagination: Bool = false,
-                       paginationValue: Int = 1,
+                       paginationValue: Int,
                        completion: @escaping (Result<[MarketLisItem], Error>) -> Void) {
         guard let url = createUrl(paginationValue: paginationValue) else { return }
         if pagination {
@@ -48,7 +48,7 @@ extension CoinsMarketService {
                     self.isPaginating = false
                 }
             case .failure(let failure):
-                print(failure)
+                completion(.failure(failure))
                 if pagination {
                     self.isPaginating = false
                 }

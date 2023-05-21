@@ -9,5 +9,6 @@ target 'CryptoTracker' do
 
   pod 'Alamofire'
   pod 'Kingfisher', '~> 7.0'
+  pod 'SwiftEntryKit', '2.0.0'
 
 end

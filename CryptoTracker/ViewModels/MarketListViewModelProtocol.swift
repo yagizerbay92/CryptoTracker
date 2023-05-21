@@ -10,10 +10,11 @@ import UIKit
 
 protocol MarketListViewModelProtocol: AnyObject {
     func subscribeListChange(with completion: @escaping MarketListCallback)
-    func fetchMarketList(pagination: Bool, paginationValue: Int)
+    func fetchMarketList(pagination: Bool)
     func returnMarketTableViewListCount() -> Int
     func returnMarketTableViewList(order: IndexPath) -> MarketLisItem?
     func returnLoadingAnimationFooter(customView: UIView) -> UIView
     func returnPaginationCount() -> Int
     func startPaginationCount()
+    func subscribeListChangeError(with completion: @escaping MarketListErrorCallback)
 }
