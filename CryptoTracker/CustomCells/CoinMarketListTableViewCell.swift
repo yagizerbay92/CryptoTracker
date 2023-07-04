@@ -122,7 +122,7 @@ class CoinMarketListTableViewCell: UITableViewCell {
         coinCurrentPriceLabel.text = String(currentPrice.rounded(toPlaces: 2)).dolarSignAppended()
         
         if capPercentage >= 0.0 {
-            coinMarketCapPercLabel.textColor = UIColor.green
+            coinMarketCapPercLabel.textColor = UIColor.systemGreen
             coinMarketCapPercLabel.text = String(capPercentage.rounded(toPlaces: 2)).replacingOccurrences(of: ",", with: ".")
                 .plusSignAppended()
                 .percentageSignAppended()

@@ -20,11 +20,14 @@
 		4373E31929E9933B00E24764 /* CoinMarketListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4373E31829E9933B00E24764 /* CoinMarketListTableViewCell.swift */; };
 		4373E31C29EDFA1600E24764 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4373E31B29EDFA1600E24764 /* DoubleExtension.swift */; };
 		4373E31E29EDFB5200E24764 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4373E31D29EDFB5200E24764 /* StringExtension.swift */; };
+		439384F02A545F5E0061A42C /* MarketListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439384EF2A545F5E0061A42C /* MarketListRouter.swift */; };
+		439384F22A547C250061A42C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439384F12A547C250061A42C /* Router.swift */; };
 		4394D0C12A14F92100FEC4AA /* PopUpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394D0C02A14F92100FEC4AA /* PopUpManager.swift */; };
 		4396BB7129D7017E009C04CA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4396BB7029D7017E009C04CA /* Constants.swift */; };
 		4396BB7529D71264009C04CA /* CoinsMarketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4396BB7429D71264009C04CA /* CoinsMarketService.swift */; };
 		4396BB7729D7127B009C04CA /* CoinsMarketServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4396BB7629D7127B009C04CA /* CoinsMarketServiceProtocol.swift */; };
 		4396BB7929E1A5D9009C04CA /* MarketListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4396BB7829E1A5D9009C04CA /* MarketListModel.swift */; };
+		43C6ACE02A1F8EE20048E955 /* MarketListItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C6ACDF2A1F8EE20048E955 /* MarketListItemDetailViewController.swift */; };
 		F4D0E636309634EB9EF0FA28 /* Pods_CryptoTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7E1D4831472A5C1D36713F /* Pods_CryptoTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,11 +48,14 @@
 		4373E31829E9933B00E24764 /* CoinMarketListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMarketListTableViewCell.swift; sourceTree = "<group>"; };
 		4373E31B29EDFA1600E24764 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		4373E31D29EDFB5200E24764 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		439384EF2A545F5E0061A42C /* MarketListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketListRouter.swift; sourceTree = "<group>"; };
+		439384F12A547C250061A42C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		4394D0C02A14F92100FEC4AA /* PopUpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpManager.swift; sourceTree = "<group>"; };
 		4396BB7029D7017E009C04CA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4396BB7429D71264009C04CA /* CoinsMarketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsMarketService.swift; sourceTree = "<group>"; };
 		4396BB7629D7127B009C04CA /* CoinsMarketServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsMarketServiceProtocol.swift; sourceTree = "<group>"; };
 		4396BB7829E1A5D9009C04CA /* MarketListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketListModel.swift; sourceTree = "<group>"; };
+		43C6ACDF2A1F8EE20048E955 /* MarketListItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketListItemDetailViewController.swift; sourceTree = "<group>"; };
 		7A7E1D4831472A5C1D36713F /* Pods_CryptoTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B32EEA350DF098F2ED68328 /* Pods-CryptoTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoTracker.debug.xcconfig"; path = "Target Support Files/Pods-CryptoTracker/Pods-CryptoTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +119,7 @@
 		434FA00D29CB58B900B6EB92 /* CryptoTracker */ = {
 			isa = PBXGroup;
 			children = (
+				439384ED2A545F410061A42C /* Routers */,
 				4394D0BF2A14F91200FEC4AA /* Utils */,
 				4317B30129F034DB00BFFDED /* ViewModels */,
 				4373E31A29EDF98D00E24764 /* Extensions */,
@@ -135,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				434FA01229CB58B900B6EB92 /* MarketlistsViewController.swift */,
+				43C6ACDF2A1F8EE20048E955 /* MarketListItemDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -164,6 +172,23 @@
 				4373E31D29EDFB5200E24764 /* StringExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		439384ED2A545F410061A42C /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				439384EE2A545F4A0061A42C /* MarketListRouter */,
+				439384F12A547C250061A42C /* Router.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
+		439384EE2A545F4A0061A42C /* MarketListRouter */ = {
+			isa = PBXGroup;
+			children = (
+				439384EF2A545F5E0061A42C /* MarketListRouter.swift */,
+			);
+			path = MarketListRouter;
 			sourceTree = "<group>";
 		};
 		4394D0BF2A14F91200FEC4AA /* Utils */ = {
@@ -326,7 +351,10 @@
 				4373E31929E9933B00E24764 /* CoinMarketListTableViewCell.swift in Sources */,
 				4396BB7929E1A5D9009C04CA /* MarketListModel.swift in Sources */,
 				434FA02729D4860900B6EB92 /* UrlBuilder.swift in Sources */,
+				439384F22A547C250061A42C /* Router.swift in Sources */,
+				43C6ACE02A1F8EE20048E955 /* MarketListItemDetailViewController.swift in Sources */,
 				4317B30329F0355700BFFDED /* MarketListsViewModel.swift in Sources */,
+				439384F02A545F5E0061A42C /* MarketListRouter.swift in Sources */,
 				4373E31C29EDFA1600E24764 /* DoubleExtension.swift in Sources */,
 				4396BB7529D71264009C04CA /* CoinsMarketService.swift in Sources */,
 				4317B30529F0395A00BFFDED /* MarketListViewModelProtocol.swift in Sources */,

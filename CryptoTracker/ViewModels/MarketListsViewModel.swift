@@ -69,7 +69,7 @@ extension MarketListsViewModel: MarketListViewModelProtocol {
         return marketList?.count ?? 0
     }
     
-    func returnMarketTableViewList(order: IndexPath) -> MarketLisItem? {
+    func returnMarketTableViewListItem(order: IndexPath) -> MarketLisItem? {
         return marketList?[order.row]
     }
 
@@ -83,5 +83,41 @@ extension MarketListsViewModel: MarketListViewModelProtocol {
     
     func startPaginationCount() {
         paginationCount += 1
+    }
+    
+    func returnCurrentPrice(order: IndexPath) -> String {
+        guard let price = marketList?[order.row].currentPrice else { return "0.0" }
+        return String(price.rounded(toPlaces: 2)).dolarSignAppended()
+    }
+    
+    func returnBitcoinImage(order: IndexPath) -> String {
+        return marketList?[order.row].image ?? ""
+    }
+    
+    func returnCoinName(order: IndexPath) -> String {
+        return marketList?[order.row].name ?? ""
+    }
+    
+    func returnCoinSymbol(order: IndexPath) -> String {
+        return marketList?[order.row].symbol ?? ""
+    }
+    
+    func returnCoinPercentage(order: IndexPath) -> Double {
+        return marketList?[order.row].marketCapChangePercentage24H ?? 0.0
+    }
+    
+    func returnMarketCap(order: IndexPath) -> String {
+        guard let marketCap = marketList?[order.row].marketCap else { return "0.0" }
+        return String(marketCap.rounded(toPlaces: 2)).dolarSignAppended()
+    }
+    
+    func returnTotalVolume(order: IndexPath) -> String {
+        guard let totalVolume = marketList?[order.row].totalVolume else { return "0.0" }
+        return String(totalVolume.rounded(toPlaces: 2)).dolarSignAppended()
+    }
+    
+    func returnCirculatingSupply(order: IndexPath) -> String {
+        guard let circulatingSupply = marketList?[order.row].circulatingSupply else { return "0.0" }
+        return String(circulatingSupply.rounded(toPlaces: 2)).dolarSignAppended()
     }
 }

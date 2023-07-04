@@ -105,3 +105,7 @@ public enum CellIdentifiers {
         }
     }
 }
+
+public enum Route {
+    case marketItemDetail
+}

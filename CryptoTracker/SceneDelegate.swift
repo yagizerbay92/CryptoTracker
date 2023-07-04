@@ -20,7 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         let viewModel = MarketListsViewModel()
-        let viewController = MarketlistsViewController(viewModelProtocol: viewModel)
+        let router = MarketListRouter()
+        let viewController = MarketlistsViewController(viewModelProtocol: viewModel, router: router)
         let navigation = UINavigationController(rootViewController: viewController)
         
         window.rootViewController = navigation

@@ -10,9 +10,11 @@ import UIKit
 class MarketlistsViewController: UIViewController {
 
     private let viewModelProtocol: MarketListViewModelProtocol
+    private let router: MarketListRouter
     
-    init(viewModelProtocol: MarketListViewModelProtocol) {
+    init(viewModelProtocol: MarketListViewModelProtocol, router: MarketListRouter) {
         self.viewModelProtocol = viewModelProtocol
+        self.router = router
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -75,7 +77,7 @@ extension MarketlistsViewController: UITableViewDelegate, UITableViewDataSource 
             fatalError()
         }
         
-        if let cellModelItem = viewModelProtocol.returnMarketTableViewList(order: indexPath) {
+        if let cellModelItem = viewModelProtocol.returnMarketTableViewListItem(order: indexPath) {
             cell.configure(with: cellModelItem)
             return cell
         }
@@ -85,6 +87,11 @@ extension MarketlistsViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        coinMarketTableView.deselectRow(at: indexPath, animated: true)
+        router.route(to: .marketItemDetail, from: self, orderIndex: indexPath, viewModel: viewModelProtocol)
     }
 
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
