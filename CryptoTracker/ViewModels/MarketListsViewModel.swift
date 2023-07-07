@@ -10,14 +10,25 @@ import UIKit
 
 public typealias MarketListCallback = (() -> Void)
 public typealias MarketListErrorCallback = (() -> Void)
+public typealias MarketTrendListCallback = (() -> Void)
+public typealias MarketTrendListErrorCallback = (() -> Void)
 
 class MarketListsViewModel {
     private var marketListCallback: MarketListCallback?
     private var marketListErrorCallback: MarketListErrorCallback?
+    private var marketTrendListCallback: MarketTrendListCallback?
+    private var marketTrendListErrorCallback: MarketTrendListErrorCallback?
     private var paginationCount: Int = 1
+    
     private var marketList: [MarketLisItem]? {
         didSet {
             marketListCallback?()
+        }
+    }
+    
+    private var marketTrendList: TrendLists? {
+        didSet {
+            marketTrendListCallback?()
         }
     }
 
@@ -31,13 +42,24 @@ class MarketListsViewModel {
             case .success(let success):
                 if pagination {
                     self?.marketList?.append(contentsOf: success)
-                    self?.paginationCount += 1                    
+                    self?.paginationCount += 1
                 } else {
                     self?.marketList = success
                     self?.paginationCount = 2
                 }
             case .failure(let error):
                 self?.marketListErrorCallback?()
+            }
+        })
+    }
+    
+    private func callMarketTrendList() {
+        CoinsMarketTrendsService.shared.getMarketList(completion: { [weak self] result in
+            switch result {
+            case .success(let success):
+                self?.marketTrendList = success
+            case .failure(let error):
+                self?.marketTrendListErrorCallback?()
             }
         })
     }
@@ -61,8 +83,20 @@ extension MarketListsViewModel: MarketListViewModelProtocol {
         marketListErrorCallback = completion
     }
     
+    func subscribeMarketTrendListChange(with completion: @escaping MarketTrendListCallback) {
+        marketTrendListCallback = completion
+    }
+    
+    func subscribeMarketTrendListChangeError(with completion: @escaping MarketTrendListErrorCallback) {
+        marketTrendListErrorCallback = completion
+    }
+    
     func fetchMarketList(pagination: Bool) {
         callMarketList(pagination: pagination)
+    }
+    
+    func fetchMarketTrendList() {
+        callMarketTrendList()
     }
     
     func returnMarketTableViewListCount() -> Int {
@@ -87,7 +121,7 @@ extension MarketListsViewModel: MarketListViewModelProtocol {
     
     func returnCurrentPrice(order: IndexPath) -> String {
         guard let price = marketList?[order.row].currentPrice else { return "0.0" }
-        return String(price.rounded(toPlaces: 2)).dolarSignAppended()
+        return String(price.withCommas())
     }
     
     func returnBitcoinImage(order: IndexPath) -> String {
@@ -108,16 +142,24 @@ extension MarketListsViewModel: MarketListViewModelProtocol {
     
     func returnMarketCap(order: IndexPath) -> String {
         guard let marketCap = marketList?[order.row].marketCap else { return "0.0" }
-        return String(marketCap.rounded(toPlaces: 2)).dolarSignAppended()
+        return String(marketCap.withCommas())
     }
     
     func returnTotalVolume(order: IndexPath) -> String {
         guard let totalVolume = marketList?[order.row].totalVolume else { return "0.0" }
-        return String(totalVolume.rounded(toPlaces: 2)).dolarSignAppended()
+        return String(totalVolume.withCommas())
     }
     
     func returnCirculatingSupply(order: IndexPath) -> String {
         guard let circulatingSupply = marketList?[order.row].circulatingSupply else { return "0.0" }
-        return String(circulatingSupply.rounded(toPlaces: 2)).dolarSignAppended()
+        return String(circulatingSupply.withCommas())
+    }
+    
+    func returnItemList(order: IndexPath) -> Item? {
+        return marketTrendList?.coins[order.row].item
+    }
+    
+    func returnItemCount() -> Int {
+        return marketTrendList?.coins.count ?? 0
     }
 }

@@ -34,4 +34,25 @@ extension NetworkManager {
             }
         }
     }
+    
+    func marketTrendRequest<T: Codable>(dataType: T.Type,
+                             urlString: URL,
+                             method: HTTPMethod,
+                             completion: @escaping (Result<T, Error>) -> Void) {
+        
+        let method = Alamofire.HTTPMethod(rawValue: method.rawValue)
+        AF.request(urlString, method: method).responseData { response in
+            switch response.result {
+            case .success(let data):
+                do {
+                    let objectResponse = try JSONDecoder().decode(dataType, from: data)
+                    completion(.success(objectResponse))
+                } catch let error {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }

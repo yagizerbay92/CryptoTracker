@@ -119,7 +119,7 @@ class CoinMarketListTableViewCell: UITableViewCell {
         guard let capPercentage = newsFeedModel.marketCapChangePercentage24H,
         let currentPrice = newsFeedModel.currentPrice else { return }
         
-        coinCurrentPriceLabel.text = String(currentPrice.rounded(toPlaces: 2)).dolarSignAppended()
+        coinCurrentPriceLabel.text = String(currentPrice.withCommas())
         
         if capPercentage >= 0.0 {
             coinMarketCapPercLabel.textColor = UIColor.systemGreen

@@ -8,11 +8,7 @@
 import Foundation
 import UIKit
 
-class MarketListRouter {
-    
-}
-
-extension MarketListRouter {
+class MarketListRouter: MarketListRouterProtocol {
     func route(to routeID: Route, from context: UIViewController, orderIndex: IndexPath, viewModel: MarketListViewModelProtocol) {
         
         switch routeID {

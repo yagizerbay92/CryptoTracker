@@ -13,6 +13,7 @@ import Foundation
 public enum URLBuilderComponents {
     case baseUrl
     case markets
+    case marketTrends
     case currencyKey
     case orderKey
     case perPageKey
@@ -39,6 +40,8 @@ public enum URLBuilderComponents {
             return "sparkline"
         case .localeKey:
             return "locale"
+        case .marketTrends:
+            return "/api/v3/search/trending"
         }
     }
 }
