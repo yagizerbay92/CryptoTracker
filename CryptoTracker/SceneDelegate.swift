@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let viewModel = MarketListsViewModel()
         let router = MarketListRouter()
-        let viewController = MarketlistsViewController(viewModelProtocol: viewModel, router: router)
+        let viewController = MarketlistsViewController(viewModelProtocol: viewModel, router: router) // viewModel isim değişikliği
         let navigation = UINavigationController(rootViewController: viewController)
         
         window.rootViewController = navigation

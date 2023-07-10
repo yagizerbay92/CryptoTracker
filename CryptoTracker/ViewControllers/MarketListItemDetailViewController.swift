@@ -203,6 +203,8 @@ class MarketListItemDetailViewController: UIViewController {
             coinPercentageLabel.textColor = UIColor.red
             coinPercentageLabel.text = String(capPercentage.rounded(toPlaces: 2)).replacingOccurrences(of: ",", with: ".").percentageSignAppended()
         }
+        
+        // viewModele taşınıcak !!
     
         marketCapHeaderLabel.text = "Market Cap"
         marketCapLabel.text = viewModelProtocol.returnMarketCap(order: selectedIndex)
